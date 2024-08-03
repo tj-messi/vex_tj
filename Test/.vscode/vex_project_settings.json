@@ -1,0 +1,18 @@
+{
+	"project": {
+		"name": "VEX_TEST",
+		"slot": 8,
+		"description": "Empty V5 C++ Project",
+		"platform": "V5",
+		"creationDate": "Wed, 03 Jul 2024 09:50:20 GMT",
+		"language": "cpp",
+		"sdkVersion": "V5_20240223_11_00_00",
+		"cpp": {
+			"includePath": []
+		}
+	},
+	"extension": {
+		"version": "0.6.0",
+		"json": 1
+	}
+}

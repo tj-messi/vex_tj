@@ -1,0 +1,6 @@
+{
+    "C_Cpp.default.systemIncludePath": [
+        "${config:vexrobotics.vexcode.Cpp.Sdk.Home}\\V5\\V5_20240223_11_00_00\\vexv5\\gcc\\include\\sys"
+    ],
+    "cmake.sourceDirectory": "C:/Users/dwc240327/Documents/vex-vscode-projects/eliminate_bigcar_Wuhan/include/eigen"
+}

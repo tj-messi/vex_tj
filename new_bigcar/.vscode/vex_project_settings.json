@@ -1,0 +1,19 @@
+{
+	"extension": {
+		"version": "0.1.4",
+		"json": 2
+	},
+	"project": {
+		"name": "new_bigcar",
+		"description": "",
+		"creationDate": "7/21/2024, 8:39:38 AM",
+		"platform": "V5",
+		"language": "cpp",
+		"slot": 8,
+		"sdkVersion": "V5_20240223_11_00_00",
+		"cpp": {
+			"includePath": [],
+			"printf_float": true
+		}
+	}
+}

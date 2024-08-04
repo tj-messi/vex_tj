@@ -545,6 +545,11 @@ void autonomous()
     Hdrive.turnToAngle(90, 40, 1500, true);
     Hdrive.turnToAngle(-50, 40, 1500, false);
     Hdrive.simpleMove(-40, 1.5);
+    //撞击第二次
+
+    Hdrive.simpleMove(40,1.5);
+    Hdrive.simpleMove(-40, 1.5);
+
     Hdrive.turnToAngle(0, 40, 1500, false);
     Hdrive.moveInches(0.3*cell, 40, 1200);
     Hdrive.simpleMove(-50, 1);

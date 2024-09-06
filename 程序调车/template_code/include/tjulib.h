@@ -1,0 +1,13 @@
+#pragma once
+// 通用pid控制器
+#include "pidControl.hpp"
+// 基础函数
+#include "Math-Functions.h"
+// 基础底盘类：底盘运动控制算法
+#include "tjulib-chassis/chassis.hpp"
+// 上层结构类：上层机械结构件控制
+#include "tjulib-uppercontrol/load.hpp"
+// 远程调试类：使用手柄及蓝牙连接主机进行本地调试
+#include "RemoteDebugSerial.hpp"
+// 定位策略
+#include "tjulib-position/PositionStrategy.hpp"

@@ -9,11 +9,11 @@
 #include "tjulib.h"
 #include <string>
 /*---------------  模式选择  ---------------*/
-// 如果进�?�技能赛就def，否则注释，进�?�自�?
+// 如果进�?�技能赛就def，否则注释，进�?�自�?
 //#define SKILL
-// 如果用里程�?�就def，否则注释，用雷�?
+// 如果用里程�?�就def，否则注释，用雷�?
 #define ODOM
-// 如果要开�?远程调试就def，否则就注释
+// 如果要开�?远程调试就def，否则就注释
 #define Remotedeubug
 
 
@@ -24,11 +24,11 @@ using namespace tjulib;
 // Definition of const variables
 const double PI = 3.1415926;
 
-// imu零漂�?�?�?�?
-double zero_drift_error = 0;  // 零漂�?�?�?正，程序执�?�时不断增大
+// imu零漂�?�?�?�?
+double zero_drift_error = 0;  // 零漂�?�?�?正，程序执�?�时不断增大
 double correct_rate = 0.0000;
 
-// 全局计时�?
+// 全局计时�?
 static timer global_time;  
 
 competition Competition;
@@ -39,7 +39,7 @@ competition Competition;
 
 *************************************/
 
-/*configure meanings�?
+/*configure meanings�?
     ki, kp, kd, 
     integral's active zone (either inches or degrees), 
     error's thredhold      (either inches or degrees),
@@ -78,7 +78,7 @@ pidControl turnControl(&turn_pid);
 pidControl straightlineControl(&straightline_pid);
 // 底盘控制
 SmartChassis Drive(_leftMotors, _rightMotors, PosTrack->position, &curControl, &fwdControl, &turnControl, &straightlineControl, car_width);
-// 导入�?
+// 导入�?
 Load loading(&side_bar);
 // 远程调试
 RemoteDebug remotedebug(PosTrack->position); 
@@ -118,31 +118,31 @@ int RemoteDubug(){
     pre-autonomous run
 
  **************************/
-// 设置初�?�位�?、�?�度
+// 设置初�?�位�?、�?�度
 #ifdef SKILL
-    // 初�?�位�?，单位为inches
+    // 初�?�位�?，单位为inches
     double init_pos_x = -59;
     double init_pos_y = 35.4;
 
-    // 逆时针�?�度，范围在0 ~ 360°之间
+    // 逆时针�?�度，范围在0 ~ 360°之间
     double initangle = 0;
 
 #else
-    // 初�?�位�?，单位为inches
+    // 初�?�位�?，单位为inches
     double init_pos_x = 0 * cell;
     double init_pos_y = 0 * cell;
 
-    // 逆时针�?�度，范围在0 ~ 360°之间
+    // 逆时针�?�度，范围在0 ~ 360°之间
     double init_angle = 0;
 
 #endif
 void pre_auton(){
     thread PosTrack_(PositionTrack);
-/***********�?否开�?远程调试************/
+/***********�?否开�?远程调试************/
 #ifdef Remotedeubug
     thread Remotedebug(RemoteDubug);
 #endif
-/***********imu、gps、distancesensor、vision等�?��?�初始化************/  
+/***********imu、gps、distancesensor、vision等�?��?�初始化************/  
     
     
     if(imu.installed()){
@@ -155,7 +155,7 @@ void pre_auton(){
         while(GPS.isCalibrating()) task::sleep(8);
     }
     
-    // 设置初�?�位�?
+    // 设置初�?�位�?
     PosTrack->setPosition({init_pos_x, init_pos_y, init_angle});
     GPS.setRotation(init_angle, deg);
     GPS.setOrigin(init_pos_x, init_pos_y, inches);
@@ -187,7 +187,7 @@ void confirm_SmallCar_Finished(const char* message, const char*linkname, double 
 }    
 // Dual-Communication Demo
 void demo_dualCommunication(){
-    sendTask();  // 向联队车发送信�?
+    sendTask();  // 向联队车发送信�?
     task::sleep(200);
     Brain.Screen.print("send thread jump out\n");
 
@@ -197,7 +197,7 @@ void demo_dualCommunication(){
       
     ************************/
 
-    // 等待一�?
+    // 等待一�?
     while(1){
         AllianceLink.received("finished", confirm_SmallCar_Finished);
         task::sleep(200);
@@ -255,23 +255,23 @@ void usercontrol()
         lift_arm.stop(hold);
     });
     Controller1.ButtonR1.pressed([]() {
-        static bool motorRunning = false; // 用于追踪电机状�?
+        static bool motorRunning = false; // 用于追踪电机状�?
 
         if (!motorRunning) {
             roller_group.spin(forward,100,pct);
         } else {
-           roller_group.stop();// 停�?�电机旋�?
+           roller_group.stop();// 停�?�电机旋�?
         }
         motorRunning = !motorRunning; // 切换电机状态}
     });
 
     Controller1.ButtonR2.pressed([]() {
-        static bool motorRunning = false; // 用于追踪电机状�?
+        static bool motorRunning = false; // 用于追踪电机状�?
 
         if (!motorRunning) {
             roller_group.spin(forward,-100,pct);
         } else {
-           roller_group.stop();// 停�?�电机旋�?
+           roller_group.stop();// 停�?�电机旋�?
         }
         motorRunning = !motorRunning; // 切换电机状态}
     });
@@ -283,31 +283,31 @@ void usercontrol()
     });
 
      Controller1.ButtonA.pressed([]() {
-         static bool status = false; // 用于追踪电机状�?
+         static bool status = false; // 用于追踪电机状�?
 
          if (!status) {
              gas1.state(100,pct);
          } else {
              gas1.state(0,pct);
          }
-         status = !status; // 切换状�?
+         status = !status; // 切换状�?
      });
 
     Controller1.ButtonB.pressed([]() {
-         static bool status = false; // 用于追踪电机状�?
+         static bool status = false; // 用于追踪电机状�?
 
          if (!status) {
              gas2.state(1200,pct);
          } else {
              gas2.state(0,pct);
          }
-         status = !status; // 切换状�?
+         status = !status; // 切换状�?
      });
 
     while(true){
         Drive.ArcadeDrive();
 
-        // 调试时通过按键进入�?�?
+        // 调试时通过按键进入�?�?
          if(Controller1.ButtonX.pressing()){
              autonomous();
          }
@@ -330,9 +330,8 @@ void usercontrol()
 int main() {
   // Set up callbacks for autonomous and driver control periods.
   #ifdef SKILL
-  Competition.autonomous(skillautonoumous);
+    Competition.autonomous(skillautonoumous);
   #else
-
     Competition.autonomous(autonomous);
 
   #endif

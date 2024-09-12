@@ -56,7 +56,7 @@ namespace tjulib
 
                 currentAngle = imu.rotation() - zero_drift_error;
                 if(fwd)
-                    angleWrap(targetDeg, currentAngle);  // 大小角调整
+                    angleWrap(targetDeg, currentAngle);  // 大小角调�?
                 finalTurnSpeed = turnControl->pidCalcu(targetDeg, maxSpeed, currentAngle); // Plug angle into turning PID and get the resultant speed
         
                 if(finalTurnSpeed*prev_speed<0&& init > 0){

@@ -56,5 +56,6 @@
         "typeinfo": "cpp",
         "valarray": "cpp"
     },
-    "cmake.sourceDirectory": "D:/VEX/tjulib/tjulib_v1_2/include/eigen/bench/spbench"
+    "cmake.sourceDirectory": "D:/VEX/tjulib/tjulib_v1_2/include/eigen/bench/spbench",
+    "C_Cpp.errorSquiggles": "disabled"
 }

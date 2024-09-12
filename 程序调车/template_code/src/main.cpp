@@ -144,12 +144,14 @@ void pre_auton(){
 #endif
 /***********imu、gps、distancesensor、vision等�?��?�初始化************/  
     
-    
-    if(imu.installed()){
-        imu.calibrate();
-        while(imu.isCalibrating()) task::sleep(8);
-    }
-        
+      
+    while(!imu.installed())task::sleep(8);
+    imu.calibrate();
+    while(imu.isCalibrating())task::sleep(8);
+    task::sleep(3000);
+
+    imu.setRotation(init_angle, deg);
+
     if(GPS.installed()){
         GPS.calibrate();
         while(GPS.isCalibrating()) task::sleep(8);
@@ -217,7 +219,8 @@ void autonomous(){
 
     Drive.moveInches(2 * cell, 100, 5000, 1);
 
-
+    
+    Drive.turnToAngle(320,60,300);
     
    // Drive.CurPIDMove({2*cell, 2*cell, 0}, 80, 8000,1);
 }
@@ -329,18 +332,19 @@ void usercontrol()
 
 int main() {
   // Set up callbacks for autonomous and driver control periods.
+ 
   #ifdef SKILL
     Competition.autonomous(skillautonoumous);
   #else
     Competition.autonomous(autonomous);
 
   #endif
+    Competition.drivercontrol(usercontrol);
+    // Run the pre-autonomous function.
+     pre_auton();
+  
 
-
-  Competition.drivercontrol(usercontrol);
-
-  // Run the pre-autonomous function.
-  pre_auton();
+  
 
   // Prevent main from exiting with an infinite loop.
   while (true) {

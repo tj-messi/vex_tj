@@ -52,7 +52,7 @@ encoder encoderVertical = encoder(Brain.ThreeWirePort.A);
 // 导入杆
 motor side_bar = motor(PORT14, ratio18_1, false);
 // imu惯性传感器
-inertial imu = inertial(PORT17, left);  // 第二个参数要写left
+inertial imu = inertial(PORT16, left);  // 第二个参数要写left
 // 气动件
 pwm_out gas1 = pwm_out(Brain.ThreeWirePort.A);
 pwm_out gas2 = pwm_out(Brain.ThreeWirePort.B);

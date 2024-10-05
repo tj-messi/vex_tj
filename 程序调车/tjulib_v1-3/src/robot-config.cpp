@@ -61,7 +61,7 @@ motor lift_armMotorB = motor(PORT15, ratio36_1, false);
 motor_group lift_arm = motor_group(lift_armMotorA, lift_armMotorB);
 
 // 传送带
-motor convey_beltMotor = motor(PORT18, ratio18_1, true);
+motor convey_beltMotor = motor(PORT18, ratio36_1, false);
 
 // 吸球
 motor rollerMotorA = motor(PORT6, ratio18_1, true);

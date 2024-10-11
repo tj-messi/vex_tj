@@ -270,111 +270,32 @@ void skillautonoumous(){
       usercontrol run
 
  **************************/
+void Run(double l, double r) {
+    L1.spin(fwd, l, pct);
+    L2.spin(fwd, l, pct);
+    L3.spin(fwd, l, pct);
+    L4.spin(fwd, l, pct);
+    R1.spin(fwd, r, pct);
+    R2.spin(fwd,r, pct);
+    R3.spin(fwd,r, pct);
+    R4.spin(fwd, r, pct);
+}
+
 void usercontrol()
 {
-    Controller1.ButtonL1.pressed([]() {
-        lift_arm.spin(forward); // 电机正转
-    });
 
-    Controller1.ButtonL1.released([]() {
-        lift_arm.setStopping(brakeType::hold);
-        lift_arm.stop(hold);
-    });
+        while(1)
+    {
 
-    Controller1.ButtonL2.pressed([]() {
-         lift_arm.spin(vex::reverse); // 电机正转
-    });
+        int fb,lf;
 
-    Controller1.ButtonL2.released([]() {
-        lift_arm.setStopping(brakeType::hold);
-        lift_arm.stop(hold);
-    });
-    Controller1.ButtonR1.pressed([]() {
-        static bool motorRunning = false; // 用于追踪电机状态
-        
-        if (!motorRunning) {
-            roller_group.spin(forward,100,pct);
-            convey_beltMotor.spin(forward,100,pct);
-
-        } else {
-           roller_group.stop();// 停止电机旋转
-           convey_beltMotor.stop();
-        }
-        motorRunning = !motorRunning; // 切换电机状态}
-    });
-
-    Controller1.ButtonR2.pressed([]() {
-        static bool motorRunning = false; // 用于追踪电机状态
-
-        if (!motorRunning) {
-            roller_group.spin(forward,-100,pct);
-            convey_beltMotor.spin(reverse,100,pct);
-        } else {
-           roller_group.stop();// 停止电机旋转
-           convey_beltMotor.stop();
-        }
-        motorRunning = !motorRunning; // 切换电机状态}
-    });
-
-
-    Controller1.ButtonL1.released([]() {
-        lift_arm.setStopping(brakeType::hold);
-        lift_arm.stop(hold);
-    });
-
-     Controller1.ButtonA.pressed([]() {
-         static bool status_push = false; // 用于追踪电机状态
-
-         if (!status_push) {
-             gas_push.state(100,pct);
-         } else {
-             gas_push.state(0,pct);
-         }
-         status_push = !status_push; // 切换状态
-     });
-
-    Controller1.ButtonB.pressed([]() {
-         static bool status_hold = false; // 用于追踪电机状态
-
-         if (!status_hold) {
-             gas_hold.state(100,pct);
-         } else {
-             gas_hold.state(0,pct);
-         }
-         status_hold = !status_hold; // 切换状态
-     });
-
-     Controller1.ButtonUp.pressed([]() {
-         static bool status_lift = false; // 用于追踪电机状态
-
-         if (!status_lift) {
-             gas_lift.state(100,pct);
-         } else {
-             gas_lift.state(0,pct);
-         }
-         status_lift = !status_lift; // 切换状态
-     });
-
-    while(true){
-        
-        ODrive.ManualDrive_nonPID();
-
-        // 调试时通过按键进入自动
-         if(Controller1.ButtonX.pressing()){ 
-             autonomous();
-         }
-         if(Controller1.ButtonY.pressing()){
-             skillautonoumous();
-         }
-
-        if(Controller1.ButtonUp.pressing()){
-            vexMotorVoltageSet(side_bar.index(), 100*120);
-        }else if(Controller1.ButtonDown.pressing()){
-            vexMotorVoltageSet(side_bar.index(), -100*120);
-        }else{
-            side_bar.stop(hold);
-        }
-
+        fb=Controller1.Axis3.value();
+        lf=Controller1.Axis4.value();
+        fb=std::abs(fb)>15?fb:0;
+        lf=std::abs(lf)>15?lf:0;
+        if(fb!=0||lf!=0) Run((fb+lf)*100.0/127.0,(fb-lf)*100.0/127.0);
+        else Run(0,0);
+        //std::Sleep(8);//注意要sleep一小段时间防止过载
     }
 }
 

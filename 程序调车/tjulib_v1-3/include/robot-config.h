@@ -5,26 +5,26 @@ using namespace vex;
         physical configurations
 
 *************************************/
-// 轮距
+// �?�?
 extern const double car_width;
 // 车轮半径
 extern const double r_wheel;
-// 底盘电机-轮的齿轮传动比
+// 底盘电机-�?的齿�?传动�?
 extern const double gear_ratio;
-// 电机转角-电机转周的换算比
+// 电机�?�?-电机�?周的换算�?
 extern const double r_motor; 
-// 一个地垫长度(inches)
+// 一�?地垫长度(inches)
 extern const double cell;
-// 里程计偏置（inches）----做垂线
+// 里程计偏�?（inches�?----做垂�?
 extern const double hOffset;
 extern const double vOffset;
-// 编码轮周长
+// 编码�?周长
 extern const double r_wheel_encoder;
-// GPS的x轴方向偏置 
+// GPS的x轴方向偏�? 
 extern const double gps_offset_x;      
-// GPS的y轴方向偏置                
+// GPS的y轴方向偏�?                
 extern const double gps_offset_y;
-// 编码轮旋转角度
+// 编码�?旋转角度
 extern const double encoder_rotate_degree;
 extern double gps_x;
 extern double gps_y;
@@ -69,11 +69,11 @@ extern vision Vision;
 
 extern motor convey_beltMotor;
 
-// 四角底盘电机组声明
+// 四�?�底盘电机组声明
 extern std::vector<vex::motor*> _leftMotors;
 extern std::vector<vex::motor*> _rightMotors;
 
-// 八角底盘电机组声明
+// �?角底盘电机组声明
 extern std::vector<vex::motor*> _lfMotors;
 extern std::vector<vex::motor*> _lbMotors;
 extern std::vector<vex::motor*> _rfMotors;

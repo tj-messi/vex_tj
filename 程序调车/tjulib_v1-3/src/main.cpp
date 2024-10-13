@@ -284,9 +284,9 @@ void Run(double l, double r) {
 void usercontrol()
 {
 
-        while(1)
+    while(1)
     {
-
+        
         int fb,lf;
 
         fb=Controller1.Axis3.value();
@@ -295,7 +295,11 @@ void usercontrol()
         lf=std::abs(lf)>15?lf:0;
         if(fb!=0||lf!=0) Run((fb+lf)*100.0/127.0,(fb-lf)*100.0/127.0);
         else Run(0,0);
-        //std::Sleep(8);//注意要sleep一小段时间防止过载
+        //std::Sleep(8);//注意要sleep一小段时间防止过载 
+        
+        
+
+
     }
 }
 

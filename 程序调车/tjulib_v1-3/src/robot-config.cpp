@@ -29,11 +29,11 @@ double gps_heading = 0;
 // A global instance of brain used for printing to the V5 Brain screen
 brain  Brain;
 // 底盘电机 - 四角底盘
-motor L1 = motor(PORT7, ratio36_1, true);
-motor L2 = motor(PORT6, ratio36_1, false);
+motor L1 = motor(PORT7, ratio18_1, true);
+motor L2 = motor(PORT19, ratio18_1, false);
 motor L3 = motor(PORT17, ratio6_1, true);
 motor L4 = motor(PORT5, ratio6_1, false);
-motor R1 = motor(PORT18, ratio6_1, true);
+motor R1 = motor(PORT18, ratio18_1, false);
 motor R2 = motor(PORT20, ratio6_1, false);
 motor R3 = motor(PORT12, ratio6_1, true);
 motor R4 = motor(PORT15, ratio6_1, false); 
@@ -56,9 +56,9 @@ std::vector<vex::motor*> _rfMotors = {&rf1, &rf2};
 std::vector<vex::motor*> _rbMotors = {&rb1, &rb2};
 
 // 抬升臂
-motor lift_armMotorA = motor(PORT8, ratio36_1, true);
-motor lift_armMotorB = motor(PORT15, ratio36_1, false);
-motor_group lift_arm = motor_group(lift_armMotorA, lift_armMotorB);
+//motor lift_armMotorA = motor(PORT7, ratio36_1, true);
+//motor lift_armMotorB = motor(PORT18, ratio36_1, false);
+//motor_group lift_arm = motor_group(lift_armMotorA, lift_armMotorB);
 
 // 传送带
 motor convey_beltMotor = motor(PORT18, ratio36_1, false);
